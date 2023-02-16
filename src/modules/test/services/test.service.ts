@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import { TestEntity } from '../entities/test.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { TestDto } from '../../../dtos/test.dto';
+import { classToObject, mapAddressToDTO } from 'src/utilities/mapper';
 
 @Injectable()
 export class TestService {
@@ -33,5 +35,13 @@ export class TestService {
 		const test = await this.testRepository.findOne({ where: { id: id } });
 		this.testRepository.remove(test);
 		return true;
+	}
+
+	async testDto(id: string){
+		const test = await this.testRepository.findOne({ where: { id: id } });
+		const testDTO = new TestDto();
+		const testo = mapAddressToDTO(test, testDTO);
+		const testo2 = classToObject(test);
+		return {testo, test};
 	}
 }

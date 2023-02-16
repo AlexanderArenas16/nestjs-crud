@@ -30,4 +30,9 @@ export class TestController {
 	deleteTest(@Param(':testId') id: string){
 		return this.testService.deleteTest(id);
 	}
+
+	@Get('dto/:testId')
+	testDto(@Param('testId') id: string){
+		return this.testService.testDto(id);
+	}
 }
