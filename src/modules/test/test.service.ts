@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { TestEntity } from '../entities/test.entity';
+import { TestEntity } from '../../entities/test.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { TestDto } from '../../../dtos/test.dto';
+import { TestDto } from '../../dtos/test.dto';
 import { classToObject, mapAddressToDTO } from 'src/utilities/mapper';
 
 @Injectable()

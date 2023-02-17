@@ -1,5 +1,5 @@
 import { TestDto } from "src/dtos/test.dto";
-import { TestEntity } from "src/modules/test/entities/test.entity";
+import { TestEntity } from "src/entities/test.entity";
 
 export function mapAddressToDTO(entity: TestEntity, dto: TestDto) {
     const objectEntity = Object.assign({}, entity);
