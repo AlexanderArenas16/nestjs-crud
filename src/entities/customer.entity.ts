@@ -10,4 +10,14 @@ export class CustomerEntity {
 
 	@Column()
 	lastName: string;
+
+	@Column()
+	personalId: string;
+
+	@Column()
+	cellphone: string;
+
+	@Column()
+	address: string;
+
 }
