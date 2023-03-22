@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TestModule } from './modules/test/test.module';
-import { ProductModule } from './product/product.module';
+import { ProductModule } from './modules/product/product.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
 	imports: [
@@ -18,8 +18,8 @@ import { ProductModule } from './product/product.module';
 			retryDelay: 3000,
 			retryAttempts: 10,
 		}),
-		TestModule,
-		ProductModule],
+		ProductModule,
+		AuthModule],
 	controllers: [],
 	providers: [],
 })
