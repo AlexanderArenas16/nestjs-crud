@@ -1,21 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { BaseEntity } from './base.entity';
+import { Entity, Column } from 'typeorm';
+import { PersonEntity } from './person.entity';
 
 @Entity()
-export class Customer extends BaseEntity {
-	@Column()
-	name: string;
-
-	@Column()
-	lastName: string;
-
-	@Column()
-	personalId: string;
-
-	@Column()
-	cellphone: string;
-
-	@Column()
-	address: string;
-
+export class CustomerEntity extends PersonEntity {
+	@Column({ nullable: true })
+	discount?: number;
 }

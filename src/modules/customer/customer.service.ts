@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Customer } from 'src/entities/customer.entity';
+import { CustomerAddDto } from 'src/dtos/customer.dto';
+import { CustomerEntity } from 'src/entities/customer.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class CustomerService {
     constructor(
-        @InjectRepository(Customer) private customerRepository: Repository<Customer>
+        @InjectRepository(CustomerEntity) private customerRepository: Repository<CustomerEntity>
         ) {}
 
     async getAll(){
@@ -17,20 +18,20 @@ export class CustomerService {
 		return await this.customerRepository.findOne({ where: { id: id } })
 	}
 
-	async createCustomer(body: any){
-		const newTest = this.customerRepository.create(body);
-		return  this.customerRepository.save(newTest);
+	async createCustomer(body: CustomerAddDto){
+		const newCustomer = this.customerRepository.create(body);
+		return  this.customerRepository.save(newCustomer);
 	}
 
 	async updateCustomer(id: string, body: any){
-		const test = await this.customerRepository.findOne({ where: { id: id } });
-		const uploadTest = this.customerRepository.merge(test, body);
-		return this.customerRepository.save(uploadTest);																																																																																																																																																																																																																																																																																																																																																																																																																																																														
+		const customer = await this.customerRepository.findOne({ where: { id: id } });
+		const uploadCustomer = this.customerRepository.merge(customer, body);
+		return this.customerRepository.save(uploadCustomer);																																																																																																																																																																																																																																																																																																																																																																																																																																																														
 	}
 
 	async deleteCustomer(id: string){
-		const test = await this.customerRepository.findOne({ where: { id: id } });
-		this.customerRepository.remove(test);
+		const customer = await this.customerRepository.findOne({ where: { id: id } });
+		this.customerRepository.remove(customer);
 		return true;
 	}
 }
